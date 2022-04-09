@@ -7,7 +7,7 @@ int main() {
 
     Network evoNet(target);
 
-    for(int i = 0; i < 1000; i++) {
+    for(int i = 0; i < 100; i++) {
         printf("%d:\n", i+1);
         evoNet.train();
         printf("\n");

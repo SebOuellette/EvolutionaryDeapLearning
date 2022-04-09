@@ -15,15 +15,15 @@ Instance::Instance(Location startPoint): location(startPoint) {
         this->biases.push_back(0);
 }
 
-Instance::Instance(Location startPoint, Instance previousInstance): 
+Instance::Instance(Location startPoint, Instance previousInstance, float dist): 
 location(startPoint) {
     this->weights = previousInstance.weights;   //copy the weights from the previous instance
     this->biases = previousInstance.biases;
     
     for(int i = 0; i < INPUT_COUNT * OUTPUT_COUNT; i++)   //offset the weights by a small amount
-        this->weights[i] += fmod(((float)rand() / 10000), 0.5) - 0.25; //constrains the weight offset to 1 and -1
+        this->weights[i] += fmod(((float)rand() / 10000), dist/100) - dist/2/100; //constrains the weight offset to 1 and -1
     for(int i = 0; i < OUTPUT_COUNT; i++)
-	this->biases[i] += fmod(((float)rand() / 10000), 0.5) - 0.25;
+	this->biases[i] += fmod(((float)rand() / 10000), dist/100) - dist/2/100;
 }
 
 float Instance::constrain(float num) {

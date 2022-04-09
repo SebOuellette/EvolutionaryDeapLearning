@@ -54,7 +54,7 @@ void Network::train() {
     }
 
     for (int i=0;i<INSTANCE_COUNT;i++) { //Create instances
-        this->instances[i] = Instance(Location(20), closest);
+        this->instances[i] = Instance(Location(20), closest, smallestDist);
     }
         
 }

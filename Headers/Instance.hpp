@@ -22,7 +22,7 @@ private:
 public:
     Instance();
     Instance(Location);
-    Instance(Location, Instance);
+    Instance(Location, Instance, float);
     Location getLocation();
 
     void run(Location);
