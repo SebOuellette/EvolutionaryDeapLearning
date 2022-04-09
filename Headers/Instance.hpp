@@ -17,6 +17,7 @@ class Instance {
 private:
     Location location;
     std::vector<float> weights;
+    std::vector<float> biases;
 
 public:
     Instance();

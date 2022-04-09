@@ -6,10 +6,10 @@ OBJECT_FILES := $(patsubst Source/%.cpp,%.o,$(wildcard Source/*.cpp))
 all: main
 
 %.o: Source/%.cpp
-	$(CXX) -std=c++0x -c Source/$*.cpp -lpthread
+	$(CXX) -std=c++0x -c Source/$*.cpp
 
 main: $(OBJECT_FILES)
-	$(CXX)  $(OBJECT_FILES) -o main -lpthread
+	$(CXX)  $(OBJECT_FILES) -o main
 
 valgrind:
 	valgrind ./main

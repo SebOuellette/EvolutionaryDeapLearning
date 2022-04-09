@@ -4,7 +4,7 @@
 
 Network::Network(Location target): target(target) {
     srand(time(NULL));
-
+    
     for (int i=0;i<INSTANCE_COUNT;i++) { //Create instances
         this->instances.push_back(Instance(Location(20)));
     }
@@ -33,7 +33,7 @@ void Network::draw() {
 }
 
 void Network::train() {
-    for (int l = 0; l < 20; l++) {
+    for (int l = 0; l < ITERATIONS; l++) {
         for(int i = 0; i < INSTANCE_COUNT; i++) {
             this->instances[i].run(this->target);
         }
