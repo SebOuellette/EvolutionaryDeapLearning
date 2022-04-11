@@ -15,7 +15,9 @@ private:
 
 public:
     Network(Location);
+    Location getTarget();
+    void setTarget(Location);
 
-    void train();
-    void draw();
+    bool train();
+    bool draw();
 };

@@ -21,9 +21,9 @@ location(startPoint) {
     this->biases = previousInstance.biases;
     
     for(int i = 0; i < INPUT_COUNT * OUTPUT_COUNT; i++)   //offset the weights by a small amount
-        this->weights[i] += fmod(((float)rand() / 10000), dist/100) - dist/2/100; //constrains the weight offset to 1 and -1
+        this->weights[i] += fmod(((float)rand() / 10000), dist/10) - dist/2/10; //constrains the weight offset to 1 and -1
     for(int i = 0; i < OUTPUT_COUNT; i++)
-	this->biases[i] += fmod(((float)rand() / 10000), dist/100) - dist/2/100;
+	    this->biases[i] += fmod(((float)rand() / 10000), dist/10) - dist/2/10;
 }
 
 float Instance::constrain(float num) {

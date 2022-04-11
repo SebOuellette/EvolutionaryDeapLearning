@@ -10,7 +10,17 @@ Network::Network(Location target): target(target) {
     }
 }
 
-void Network::draw() {
+Location Network::getTarget() {
+    return this->target;
+}
+
+void Network::setTarget(Location target) {
+    this->target = target;
+}
+
+bool Network::draw() {
+    bool returnValue = false;
+
     for (int y=0;y<GRID_SIZE;y++) {
         for (int x=0;x<GRID_SIZE;x++) {
 
@@ -20,6 +30,8 @@ void Network::draw() {
                 if ((int)round(i.getLocation().getX()) == x && (int)round(i.getLocation().getY()) == y) {
                     drewItem++;
                 }
+                if (drewItem == INSTANCE_COUNT && i.getLocation() == this->target)
+                    returnValue = true;
             }
             
             if (!drewItem)
@@ -30,16 +42,18 @@ void Network::draw() {
         }
         printf("\n");
     }
+
+    return returnValue;
 }
 
-void Network::train() {
+bool Network::train() {
     for (int l = 0; l < ITERATIONS; l++) {
         for(int i = 0; i < INSTANCE_COUNT; i++) {
             this->instances[i].run(this->target);
         }
     }
 
-    this->draw();   //visually displays the iterations
+    bool returnVal = this->draw();   //visually displays the iterations
 
     float smallestDist = -1;
     Instance closest;
@@ -56,5 +70,7 @@ void Network::train() {
     for (int i=0;i<INSTANCE_COUNT;i++) { //Create instances
         this->instances[i] = Instance(Location(20), closest, smallestDist);
     }
+
+    return returnVal;
         
 }

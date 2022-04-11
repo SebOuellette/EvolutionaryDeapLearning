@@ -44,3 +44,7 @@ float Location::distance(Location secondLocation) {
 
     return sqrt(powf(secondLocation.getX() - this->getX(), 2.f) + powf(secondLocation.getY() - this->getY(), 2.f));
 }
+
+bool Location::operator==(Location b) {
+    return this->x == round(b.x) && this->y == round(b.y);
+} 

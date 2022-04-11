@@ -19,4 +19,6 @@ public:
     void move(float, float);
 
     float distance(Location);
+
+    bool operator==(Location b);
 };
